@@ -84,6 +84,37 @@ Installation</h1>
 <img src="step2.png" alt="The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library."/>
 </div>
  <h2>Press install.</h2>
+<h2>Next, add version 0.9 of the RF24G library.</h2>
+<div class="image">
+<img src="step3.PNG" alt="Next, add version 0.9 of the RF24G library."/>
+</div>
+ <h2>Press install.</h2>
+<h1>Wiring</h1>
+<h3>This tutorial assumes you are using the RF24 modules sold here: <a href="http://yourduino.com/sunshop//index.php?l=product_detail&p=489">http://yourduino.com/sunshop//index.php?l=product_detail&amp;p=489</a></h3>
+<h3>recouses for this tutorial are based on Terry's instructions at <a href="https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo">https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo</a></h3>
+<h2>First, attach the either the high power or low power radio module to the base module</h2>
+<div class="image">
+<img src="LP_MODULE.jpg" alt="LOW_POWER"/>
+</div>
+ <div class="image">
+<img src="HP_MODULE.jpg" alt="HIGH_POWER"/>
+</div>
+ <h2>Next, connect jumpers between the Arduino and the base module using this table</h2>
+<div class="image">
+<img src="table.png" alt="table"/>
+</div>
+ <h3>More in-depth instructions can be found at <a href="https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo">https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo</a></h3>
+<h1>General concepts</h1>
+<h2>This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.</h2>
+<h3>Up to 6 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5).</h3>
+<h3>Each radio is initialized using an <a class="el" href="class_r_f24___g.html">RF24_G</a> object, which provides the ability to read and write packets.</h3>
+<h3>This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.</h3>
+<h3>The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet. More info can be seen it the <a class="el" href="class_r_f24___g.html#a00d022e73f823087f1b2185545afbaa4">RF24_G::read()</a> docs.</h3>
+<h3>The <a class="el" href="classpacket.html">packet</a> class is an object that contains all the necessary information to bring data to and from each radio, as well as let each radio keep track of any dropped packets.</h3>
+<h3>A <a class="el" href="classpacket.html">packet</a> allows for any playload that is 30 bytes long. The payload can be any type or array of types.</h3>
+<h1>How to use this documentation.</h1>
+<h2>Read the <a class="el" href="classpacket.html">packet</a> and <a class="el" href="class_r_f24___g.html">RF24_G</a> class documentation. It provides a description of what every class and object in the library is for.b</h2>
+<h2>Check the examples to understand the way the two classes are used to send data from one radio to another.</h2>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

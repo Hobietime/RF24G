@@ -1,5 +1,10 @@
-#include <RF24G.h>
 
+/* This sketch sends a packet with random data to another radio and waits for 
+ * the packet to be sent back.  It prints out the random data and the received data, which should be the same.
+ */
+
+#include <RF24G.h>
+// We must instantiate the RF24_G object outside of the setup function so it is available in the loop function
 RF24_G test;
 void setup() {
 	Serial.begin(9600);
@@ -28,16 +33,16 @@ void loop() {
 	Serial.println(randNumber);
 	// send the packet, if it is successful try to read back the packet
 	if (test.write(sender) == true) {
-		// check if a packet is received
-		if (test.available() == true) {
-			// copy the packet into the receiver object
-			test.read(&receiver);
-			// copy the payload into the actual value
-			receiver.readPayload(actual, sizeof(int));
-			// print out the actual value received
-			Serial.print("received number:");
-			Serial.println(actual);
-		}
+		// wait until a packet is received
+		while (test.available() != true);
+		// copy the packet into the receiver object
+		test.read(&receiver);
+		// copy the payload into the actual value
+		receiver.readPayload(actual, sizeof(int));
+		// print out the actual value received
+		Serial.print("received number:");
+		Serial.println(actual);
+		
 	}
 
 }

@@ -140,12 +140,12 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Constructor</p>
-<p>Creates a new instance of the radio object. This configures tmrh20's driver. Before using, you create an instance and send in the unique pins that this chip is connected to.</p>
+<p>Creates a new instance of the radio object. This configures tmrh20's driver. Before using, you create an instance and send in the unique pins that this chip is connected to. If you have followed the wiring diagram on the first page, the CE pin should be 7 and the CS pin should be 8.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>The address of tis radio instance </td></tr>
-    <tr><td class="paramname">_cepin</td><td>The pin attached to Chip Enable on the RF module </td></tr>
-    <tr><td class="paramname">_cspin</td><td>The pin attached to Chip Select </td></tr>
+    <tr><td class="paramname">_cepin</td><td>The pin attached to Chip Enable (CE) pin on the RF module </td></tr>
+    <tr><td class="paramname">_cspin</td><td>The pin attached to Chip Select (CS) pin </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,8 +188,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Writes a packet. This needs the address of an object to work correctly.</p>
+<p>Writes data to a packet. The packet is passed by reference, this means we need to use the &amp; operator.</p>
 <div class="fragment"><div class="line"><span class="comment">//write() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.write( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Transmission failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was sent successfully, false if not. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Just because a packet was not sent successfully, it does not mean a packet was not received by the target radio! </dd>
+<dd>
+This could be due to the sender not receiving the confirmation that the target radio has received the packet. </dd>
+<dd>
+This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a7">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a5">RF24G_Send.cpp</a>.</dd>
 </dl>
 </div>
@@ -209,7 +214,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reads a packet. This needs the address of an object to work correctly.</p>
+<p>Reads a packet. The packet is passed by reference, this means we need to use the &amp; operator.</p>
 <div class="fragment"><div class="line"><span class="comment">//read() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.read( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Receive failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was read successfully, false if not. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a4">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a7">RF24G_Send.cpp</a>.</dd>
 </dl>

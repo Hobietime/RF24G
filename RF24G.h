@@ -94,8 +94,8 @@ public:
 
 	/**
 	   * Adds any datatype smaller than 30 bytes to the packet. 
-	   * @note There is no way to determine what kind of datatype is in this packet.
-	   * @note If you want to send multiple values, use a struct or class similar to this packet within the payload.
+	   * @note There is no way to determine what kind of datatype is in this packet without prior knowledge.
+	   * @note If you want to send different types of payloads, use a struct or class similar to this packet within the payload that contains metadata on what type of data it is.
 	   *
 	   * This needs the address of an object and it's size to work correctly.
 	   * @code
@@ -175,10 +175,11 @@ public:
 	   *
 	   * Creates a new instance of the radio object.  This configures tmrh20's driver.  Before using, you create an instance
 	   * and send in the unique pins that this chip is connected to.
+	   * If you have followed the wiring diagram on the first page, the CE pin should be 7 and the CS pin should be 8. 
 	   *
 	   * @param address The address of tis radio instance
-	   * @param _cepin The pin attached to Chip Enable on the RF module
-	   * @param _cspin The pin attached to Chip Select
+	   * @param _cepin The pin attached to Chip Enable (CE) pin on the RF module
+	   * @param _cspin The pin attached to Chip Select (CS) pin
 	   */	
 	RF24_G(uint8_t address, uint8_t _cepin, uint8_t _cspin);
 
@@ -192,8 +193,8 @@ public:
 	bool available();
 
 	/**
-	   * Writes a packet.
-	   * This needs the address of an object to work correctly.
+	   * Writes data to a packet.
+	   * The packet is passed by reference, this means we need to use the & operator.
 	   *
 	   * @code
 	   *	//write() example:
@@ -205,12 +206,14 @@ public:
 	   * @endcode 
 	   * 
 	   * @return True if a packet was sent successfully, false if not. 
-	   * 
+	   * @note Just because a packet was not sent successfully, it does not mean a packet was not received by the target radio! 
+	   * @note This could be due to the sender not receiving the confirmation that the target radio has received the packet.
+	   * @note This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software.
 	   */
 	bool write(const packet* _packet);
 	/**
 	   * Reads a packet.
-	   * This needs the address of an object to work correctly.
+	   * The packet is passed by reference, this means we need to use the & operator.
 	   *
 	   * @code
 	   *	//read() example:
@@ -256,6 +259,29 @@ public:
  * ## The library manager will show as an additional window.  
  * ## Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.
  * ![The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.](step2.png)
+ * ## Press install.  
+ * ## Next, add version 0.9 of the RF24G library.
+ * ![Next, add version 0.9 of the RF24G library.](step3.PNG)
  * ## Press install. 
+ * # Wiring
+ * ### This tutorial assumes you are using the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
+ * ### recouses for this tutorial are based on Terry's instructions at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
+ * ## First, attach the either the high power or low power radio module to the base module
+ * ![LOW_POWER](LP_MODULE.jpg)
+ * ![HIGH_POWER](HP_MODULE.jpg)
+ * ## Next, connect jumpers between the Arduino and the base module using this table
+ * ![table](table.png)
+ * ### More in-depth instructions can be found at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
+ * # General concepts
+ * ## This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.
+ * ### Up to 6 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5).
+ * ### Each radio is initialized using an #RF24_G object, which provides the ability to read and write packets.
+ * ### This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.
+ * ### The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet.  More info can be seen it the #RF24_G::read() docs.
+ * ### The #packet class is an object that contains all the necessary information to bring data to and from each radio, as well as let each radio keep track of any dropped packets.
+ * ### A #packet allows for any playload that is 30 bytes long. The payload can be any type or array of types.
+ * # How to use this documentation. 
+ * ## Read the #packet and #RF24_G class documentation. It provides a description of what every class and object in the library is for.b  
+ * ## Check the examples to understand the way the two classes are used to send data from one radio to another.
  */
  #endif

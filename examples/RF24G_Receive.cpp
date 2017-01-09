@@ -1,5 +1,10 @@
 
+/* This is a small sketch that listens 
+ * for packets and forwards them back to the sender.
+ */
+
 #include <RF24G.h>
+// we must instantiate the RF24_G object outside of the setup function so it is available in the loop function
 RF24_G test;
 int i = 0;
 void setup() {
@@ -21,7 +26,7 @@ void loop() {
 		// read the data into the packet 
 		test.read(&receiver);
 		// print the packet number of the received packet
-		// if these are not consecutive packets are being lost without retransmit (this is bad)
+		// if these are not consecutive packets are being lost due to timeouts.
 		Serial.print("count: ")
 		Serial.println(receiver.getCnt());
 		// print the source address of the received packet

@@ -220,9 +220,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds any datatype smaller than 30 bytes to the packet. </p><dl class="section note"><dt>Note</dt><dd>There is no way to determine what kind of datatype is in this packet. </dd>
+<p>Adds any datatype smaller than 30 bytes to the packet. </p><dl class="section note"><dt>Note</dt><dd>There is no way to determine what kind of datatype is in this packet without prior knowledge. </dd>
 <dd>
-If you want to send multiple values, use a struct or class similar to this packet within the payload.</dd></dl>
+If you want to send different types of payloads, use a struct or class similar to this packet within the payload that contains metadata on what type of data it is.</dd></dl>
 <p>This needs the address of an object and it's size to work correctly. </p><div class="fragment"><div class="line"><span class="comment">//addPayload() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var = 23;</div><div class="line">     <span class="keywordflow">if</span> (<a class="code" href="classpacket.html">packet</a>.<a class="code" href="classpacket.html#af40fdcda00a1371c60e9e4444df0c13f">addPayload</a>( &amp;value, <span class="keyword">sizeof</span>(var)) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Datatype is too large!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if the size is within 30 bytes, false if it is not.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>This does not allow for you to overwrite the packet. But it is possible to overread from locations in memory that are adjacent to an object! Always use sizeof(yourObject) to prevent this. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__send_8cpp-example.html#a4">RF24G_Send.cpp</a>.</dd>
