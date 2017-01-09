@@ -1,6 +1,6 @@
 
 /**
- * @file RF24G.h
+ * @file rf24g.h
  * @author Caio Motta
  * @date 19 Sep 2016
  * @brief A simple interface for the RF24 radio that abstracts thmr20's Driver.

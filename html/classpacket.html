@@ -89,7 +89,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6d50c91a97477e0de8ff0d3a23341f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#_a2">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#_a2">RF24G_Send.cpp</a>.</dd>
+<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#_a2">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#_a2">rf24g_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae33ebc35602983d12aa139f050f77938"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae33ebc35602983d12aa139f050f77938">&sect;&nbsp;</a></span>packet()</h2>
@@ -128,7 +128,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Sets the address of a packet.</p>
 <p>If you are sending a packet, set this to set the destination of the packet. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__send_8cpp-example.html#a3">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a3">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -170,7 +170,7 @@ Public Member Functions</h2></td></tr>
 <p>This is used internally by the library to set the packet counter. This is used to detect duplicate packets.</p>
 <p>The user does not need to use this method.</p>
 <dl class="section return"><dt>Returns</dt><dd>Current packet counter. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a5">RF24G_Receive.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a5">rf24g_receive.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -225,7 +225,7 @@ Public Member Functions</h2></td></tr>
 If you want to send different types of payloads, use a struct or class similar to this packet within the payload that contains metadata on what type of data it is.</dd></dl>
 <p>This needs the address of an object and it's size to work correctly. </p><div class="fragment"><div class="line"><span class="comment">//addPayload() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var = 23;</div><div class="line">     <span class="keywordflow">if</span> (<a class="code" href="classpacket.html">packet</a>.<a class="code" href="classpacket.html#af40fdcda00a1371c60e9e4444df0c13f">addPayload</a>( &amp;value, <span class="keyword">sizeof</span>(var)) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Datatype is too large!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if the size is within 30 bytes, false if it is not.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>This does not allow for you to overwrite the packet. But it is possible to overread from locations in memory that are adjacent to an object! Always use sizeof(yourObject) to prevent this. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__send_8cpp-example.html#a4">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a4">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -263,13 +263,13 @@ If you want to send multiple values, use a struct or class similar to this packe
 <dl class="section warning"><dt>Warning</dt><dd>If you specify a size that is larger than the object you wish to write to, you can write into adjacent memory! </dd>
 <dd>
 This <em>probably</em> will crash your program and/or give you junk data in other parts of your code! Always use sizeof(yourObject) to prevent this. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a6">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a8">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a6">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a8">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_r_f24_g_8h_source.html">RF24G.h</a></li>
-<li>RF24G.cpp</li>
+<li><a class="el" href="rf24g_8h_source.html">rf24g.h</a></li>
+<li>rf24g.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

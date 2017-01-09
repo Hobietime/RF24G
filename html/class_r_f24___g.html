@@ -87,7 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a84472b6c06d38d0e04d783056d1b2698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#_a0">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#_a0">RF24G_Send.cpp</a>.</dd>
+<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#_a0">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#_a0">rf24g_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6e389aa7e1856c4266e144bb4da3348a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e389aa7e1856c4266e144bb4da3348a">&sect;&nbsp;</a></span>RF24_G() <span class="overload">[1/2]</span></h2>
@@ -169,7 +169,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks if there is a packet received packet to be read</p>
 <dl class="section return"><dt>Returns</dt><dd>True if a packet is available, false if not. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a3">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a6">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a3">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a6">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -195,7 +195,7 @@ Public Member Functions</h2></td></tr>
 This could be due to the sender not receiving the confirmation that the target radio has received the packet. </dd>
 <dd>
 This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a7">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a5">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a7">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a5">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -216,7 +216,7 @@ This could be fixed with a 3 way handshake, but that is not supported in hardwar
 </div><div class="memdoc">
 <p>Reads a packet. The packet is passed by reference, this means we need to use the &amp; operator.</p>
 <div class="fragment"><div class="line"><span class="comment">//read() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.read( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Receive failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was read successfully, false if not. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a4">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a7">RF24G_Send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a4">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a7">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -241,8 +241,8 @@ This could be fixed with a 3 way handshake, but that is not supported in hardwar
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_r_f24_g_8h_source.html">RF24G.h</a></li>
-<li>RF24G.cpp</li>
+<li><a class="el" href="rf24g_8h_source.html">rf24g.h</a></li>
+<li>rf24g.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
