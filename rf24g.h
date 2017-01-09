@@ -145,8 +145,8 @@ public:
 
 class RF24_G {
 /** 
-   * \example RF24G_Send.cpp
-   * \example RF24G_Receive.cpp
+   * \example rf24g_end.cpp
+   * \example rf24g_receive.cpp
    * This is an example on how to receive using the RF24_G class
    */
 private:
