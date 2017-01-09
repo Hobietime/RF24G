@@ -86,7 +86,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a84472b6c06d38d0e04d783056d1b2698"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24___g.html#a84472b6c06d38d0e04d783056d1b2698">setChannel</a> (uint8_t channel)</td></tr>
 <tr class="separator:a84472b6c06d38d0e04d783056d1b2698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#_a0">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#_a0">RF24G_Send.cpp</a>.</dd>
+</dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6e389aa7e1856c4266e144bb4da3348a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e389aa7e1856c4266e144bb4da3348a">&sect;&nbsp;</a></span>RF24_G() <span class="overload">[1/2]</span></h2>
 
@@ -167,7 +169,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks if there is a packet received packet to be read</p>
 <dl class="section return"><dt>Returns</dt><dd>True if a packet is available, false if not. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a3">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a6">RF24G_Send.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ac10bdf625f27df73183788a6358d2e71"></a>
@@ -185,9 +188,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Writes a packet. This needs the address of an object and it's size to work correctly.</p>
+<p>Writes a packet. This needs the address of an object to work correctly.</p>
 <div class="fragment"><div class="line"><span class="comment">//write() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.write( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Transmission failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was sent successfully, false if not. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a7">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a5">RF24G_Send.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a00d022e73f823087f1b2185545afbaa4"></a>
@@ -207,7 +211,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Reads a packet. This needs the address of an object to work correctly.</p>
 <div class="fragment"><div class="line"><span class="comment">//read() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.read( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Receive failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was read successfully, false if not. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_r_f24_g__receive_8cpp-example.html#a4">RF24G_Receive.cpp</a>, and <a class="el" href="_r_f24_g__send_8cpp-example.html#a7">RF24G_Send.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a84472b6c06d38d0e04d783056d1b2698"></a>

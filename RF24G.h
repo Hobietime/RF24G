@@ -8,6 +8,7 @@
  * This library provides a simple way for up to 6 nRF24L01 radios to communicate with each other.
  *
  * @see http://tmrh20.github.io/RF24/
+ * @see https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  */
 
 
@@ -47,9 +48,11 @@ public:
 	   * Default  Constructor
 	   *
 	   * Creates a new instance of the packet object.  The packet is blank and will need to be modified with the methods below. 
+	   *
+	   *
 	   */
 
-	RF24_G();
+	packet();
 
 	/**
 	   * Sets the address of a packet.  
@@ -90,7 +93,7 @@ public:
 	void setCnt(uint8_t _cnt);
 
 	/**
-	   * Adds any datatype smaller than 31 bytes to the packet. 
+	   * Adds any datatype smaller than 30 bytes to the packet. 
 	   * @note There is no way to determine what kind of datatype is in this packet.
 	   * @note If you want to send multiple values, use a struct or class similar to this packet within the payload.
 	   *
@@ -104,7 +107,7 @@ public:
 	   *			}
 	   * @endcode 
 	   *
-	   * @return True if the size is within 31 bytes,  false if it is not. 
+	   * @return True if the size is within 30 bytes,  false if it is not. 
 	   *
 	   * @warning This does not allow for you to overwrite the packet.  But it is possible to overread from locations in memory that are adjacent to an object!  Always use sizeof(yourObject) to prevent this.
 	   */
@@ -112,7 +115,7 @@ public:
 	bool addPayload(const void * data, const uint8_t size);
 
 	/**
-	   * Retrieves any datatype smaller than 31 bytes from the packet. 
+	   * Retrieves any datatype smaller than 30 bytes from the packet. 
 	   * @note There is no way to determine what kind of datatype is in this packet.
 	   * @note If you want to send multiple values, use a struct or class similar to this packet within the payload.
 	   *
@@ -129,7 +132,7 @@ public:
 	   *
 	   * @note The variable \a var will have a new value from the packet.
 	   *
-	   * @return True if the size is within 31 bytes,  false if it is not.
+	   * @return True if the size is within 30 bytes,  false if it is not.
 	   *
 	   * @warning If you specify a size that is larger than the object you wish to write to, you can write into adjacent memory!  
 	   * @warning This \a probably will crash your program and/or give you junk data in other parts of your code!  Always use sizeof(yourObject) to prevent this.
@@ -141,6 +144,11 @@ public:
 
 
 class RF24_G {
+/** 
+   * \example RF24G_Send.cpp
+   * \example RF24G_Receive.cpp
+   * This is an example on how to receive using the RF24_G class
+   */
 private:
 	int myAddress;
 	uint8_t TXpacketCounters[MAX_NODES];
@@ -149,7 +157,7 @@ private:
 public:
 /**
    * @name Primary public interface
-   *
+   *  
    *  These are the main methods you need to send and receive data.
    */
   /**@{*/
@@ -227,4 +235,27 @@ public:
 	bool setChannel(uint8_t channel);
 
 };
-#endif
+
+/**
+ * @mainpage A simple interface for the RF24 radio that abstracts thmr20's driver.
+ *
+ * @section About About
+ *
+ * The nRF24L01+ wireless transceiver board allow for wireless communication between two or more radios at distances greater than Bluetooth or standard WiFi. This tutorial includes an overview of the different types or radios available in the store, wiring the radios to an Arduino, an example sketch that allows for two way communication, and finally tips and tricks to increase your success with the radios.
+ *
+ * @section Purchasing Purchasing
+ *
+ * There are two versions available in the UCSB ECE store. They also can be purchased on the yourduino website (http://www.yourduino.com/sunshop/) The high power transceiver has amplifiers and an external antenna.  It has been tested to work at ranges in excess of 350 meters. The low power transceivers have an internal antenna and work at about 20 meters.  The two different types can work together.  Se the tips and tricks section for more info. 
+ * 
+ * @section Installation Installation
+ *
+ * This library requires thmr20's radio driver.  Both can be found in the Arduino repository.
+ *  
+ * ## First, go to sketch→Include Library→Manage Libraries...
+ * ![First, go to sketch→Include Library→Manage Libraries...](step1.png)
+ * ## The library manager will show as an additional window.  
+ * ## Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.
+ * ![The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.](step2.png)
+ * ## Press install. 
+ */
+ #endif
