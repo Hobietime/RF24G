@@ -1,0 +1,50 @@
+\hypertarget{index_About}{}\section{About}\label{index_About}
+The n\+R\+F24\+L01+ wireless transceiver board allow for wireless communication between two or more radios at distances greater than Bluetooth or standard Wi\+Fi. This tutorial includes an overview of the different types or radios available in the store, wiring the radios to an Arduino, an example sketch that allows for two way communication, and finally tips and tricks to increase your success with the radios.\hypertarget{index_Purchasing}{}\section{Purchasing}\label{index_Purchasing}
+There are two versions available in the U\+C\+SB E\+CE store. They also can be purchased on the yourduino website (\href{http://www.yourduino.com/sunshop/}{\tt http\+://www.\+yourduino.\+com/sunshop/}) The high power transceiver has amplifiers and an external antenna. It has been tested to work at ranges in excess of 350 meters. The low power transceivers have an internal antenna and work at about 20 meters. The two different types can work together. Se the tips and tricks section for more info.\hypertarget{index_Installation}{}\section{Installation}\label{index_Installation}
+This library requires thmr20\textquotesingle{}s radio driver. Both can be found in the Arduino repository.
+
+\subsection*{First, go to sketch→\+Include Library→\+Manage Libraries...}
+
+ \subsection*{The library manager will show as an additional window.}
+
+\subsection*{Search for rf24 and select version 1.\+1.\+7 of T\+M\+Rh20’s R\+F24 Library.}
+
+ \subsection*{Press install.}
+
+\subsection*{Next, add version 0.\+9 of the R\+F24G library.}
+
+ \subsection*{Press install.}
+
+\section*{Wiring}
+
+\subsubsection*{This tutorial assumes you are using the R\+F24 modules sold here\+: \href{http://yourduino.com/sunshop//index.php?l=product_detail&p=489}{\tt http\+://yourduino.\+com/sunshop//index.\+php?l=product\+\_\+detail\&p=489}}
+
+\subsubsection*{recouses for this tutorial are based on Terry\textquotesingle{}s instructions at \href{https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo}{\tt https\+://arduino-\/info.\+wikispaces.\+com/\+Nrf24\+L01-\/2.\+4\+G\+Hz-\/\+How\+To}}
+
+\subsection*{First, attach the either the high power or low power radio module to the base module}
+
+  \subsection*{Next, connect jumpers between the Arduino and the base module using this table}
+
+ \subsubsection*{More in-\/depth instructions can be found at \href{https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo}{\tt https\+://arduino-\/info.\+wikispaces.\+com/\+Nrf24\+L01-\/2.\+4\+G\+Hz-\/\+How\+To}}
+
+\section*{General concepts}
+
+\subsection*{This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.}
+
+\subsubsection*{Up to 6 radios can be used in the network, with each having a unique address\+: (0, 1, 2, 3, 4, 5).}
+
+\subsubsection*{Each radio is initialized using an \hyperlink{class_r_f24___g}{R\+F24\+\_\+G} object, which provides the ability to read and write packets.}
+
+\subsubsection*{This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.}
+
+\subsubsection*{The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet. More info can be seen it the \hyperlink{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4}{R\+F24\+\_\+\+G\+::read()} docs.}
+
+\subsubsection*{The \hyperlink{classpacket}{packet} class is an object that contains all the necessary information to bring data to and from each radio, as well as let each radio keep track of any dropped packets.}
+
+\subsubsection*{A \hyperlink{classpacket}{packet} allows for any playload that is 30 bytes long. The payload can be any type or array of types.}
+
+\section*{How to use this documentation.}
+
+\subsection*{Read the \hyperlink{classpacket}{packet} and \hyperlink{class_r_f24___g}{R\+F24\+\_\+G} class documentation. It provides a description of what every class and object in the library is for.\+b}
+
+\subsection*{Check the examples to understand the way the two classes are used to send data from one radio to another.}

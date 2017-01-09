@@ -1,0 +1,55 @@
+\hypertarget{_r_f24_g__send_8cpp-example}{}\section{R\+F24\+G\+\_\+\+Send.\+cpp}
+
+\begin{DoxyCodeInclude}
+
+\textcolor{comment}{/* This sketch sends a packet with random data to another radio and waits for }
+\textcolor{comment}{ * the packet to be sent back.  It prints out the random data and the received data, which should be the
+       same.}
+\textcolor{comment}{ */}
+
+\textcolor{preprocessor}{#include <\hyperlink{_r_f24_g_8h}{RF24G.h}>}
+\textcolor{comment}{// We must instantiate the RF24\_G object outside of the setup function so it is available in the loop
+       function}
+\hyperlink{class_r_f24___g}{RF24\_G} test;
+\textcolor{keywordtype}{void} setup() \{
+    Serial.begin(9600);
+    \textcolor{comment}{// create the RF24G object with an address of 4, using pins 7 and 8}
+    test = \hyperlink{class_r_f24___g}{RF24\_G}(4, 7, 8);
+    \textcolor{comment}{// print out the details of the radio's configuration (useful for debug)}
+    test.radio.printDetails();
+    
+\}
+
+\textcolor{keywordtype}{void} loop() \{
+    \textcolor{comment}{// create a random number}
+    uint8\_t randNumber = random(300);
+    \textcolor{comment}{// create a variable to store the received number}
+    uint8\_t actual;
+    \textcolor{comment}{// declare the sender packet variable}
+    \hyperlink{classpacket}{packet} sender;
+    \textcolor{comment}{// declare the receiver packet variable}
+    \hyperlink{classpacket}{packet} receiver;
+    \textcolor{comment}{// set the destination of the packet to address 1}
+    sender.\hyperlink{classpacket_adc07da444b32a9105a211862e5b7f6c3}{setAddress}(1);
+    \textcolor{comment}{// write the payload to the packet}
+    sender.\hyperlink{classpacket_af40fdcda00a1371c60e9e4444df0c13f}{addPayload}(&randNumber, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));
+    \textcolor{comment}{// print out the original payload}
+    Serial.print(\textcolor{stringliteral}{"original number:"});
+    Serial.println(randNumber);
+    \textcolor{comment}{// send the packet, if it is successful try to read back the packet}
+    \textcolor{keywordflow}{if} (test.\hyperlink{class_r_f24___g_ac10bdf625f27df73183788a6358d2e71}{write}(sender) == \textcolor{keyword}{true}) \{
+        \textcolor{comment}{// wait until a packet is received}
+        \textcolor{keywordflow}{while} (test.\hyperlink{class_r_f24___g_a7298349aea33bf12acdf242b7527302b}{available}() != \textcolor{keyword}{true});
+        \textcolor{comment}{// copy the packet into the receiver object}
+        test.\hyperlink{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4}{read}(&receiver);
+        \textcolor{comment}{// copy the payload into the actual value}
+        receiver.\hyperlink{classpacket_a6d50c91a97477e0de8ff0d3a23341f73}{readPayload}(actual, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));
+        \textcolor{comment}{// print out the actual value received}
+        Serial.print(\textcolor{stringliteral}{"received number:"});
+        Serial.println(actual);
+        
+    \}
+
+\}
+\end{DoxyCodeInclude}
+ 

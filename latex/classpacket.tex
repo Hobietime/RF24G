@@ -1,0 +1,168 @@
+\hypertarget{classpacket}{}\section{packet Class Reference}
+\label{classpacket}\index{packet@{packet}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Packet public interface}\par
+{\em These are the main methods you need to set, modify, and retrieve data from packets. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpacket_ae33ebc35602983d12aa139f050f77938}{packet} ()
+\item 
+void \hyperlink{classpacket_adc07da444b32a9105a211862e5b7f6c3}{set\+Address} (uint8\+\_\+t \+\_\+address)
+\item 
+uint8\+\_\+t \hyperlink{classpacket_a87b76aa12540156e0497fa5b094e2470}{get\+Address} ()
+\item 
+uint8\+\_\+t \hyperlink{classpacket_a232661ed34d4278ab9bc81593a1aac64}{get\+Cnt} ()
+\item 
+void \hyperlink{classpacket_a583358f8d3e3361ba62af95ecd0308c2}{set\+Cnt} (uint8\+\_\+t \+\_\+cnt)
+\item 
+bool \hyperlink{classpacket_af40fdcda00a1371c60e9e4444df0c13f}{add\+Payload} (const void $\ast$data, const uint8\+\_\+t size)
+\item 
+bool \hyperlink{classpacket_a6d50c91a97477e0de8ff0d3a23341f73}{read\+Payload} (void $\ast$data, const uint8\+\_\+t size)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classpacket_ae33ebc35602983d12aa139f050f77938}{}\label{classpacket_ae33ebc35602983d12aa139f050f77938} 
+\index{packet@{packet}!packet@{packet}}
+\index{packet@{packet}!packet@{packet}}
+\subsubsection{\texorpdfstring{packet()}{packet()}}
+{\footnotesize\ttfamily packet\+::packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor
+
+Creates a new instance of the packet object. The packet is blank and will need to be modified with the methods below. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classpacket_adc07da444b32a9105a211862e5b7f6c3}{}\label{classpacket_adc07da444b32a9105a211862e5b7f6c3} 
+\index{packet@{packet}!set\+Address@{set\+Address}}
+\index{set\+Address@{set\+Address}!packet@{packet}}
+\subsubsection{\texorpdfstring{set\+Address()}{setAddress()}}
+{\footnotesize\ttfamily void packet\+::set\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+address }\end{DoxyParamCaption})}
+
+Sets the address of a packet.
+
+If you are sending a packet, set this to set the destination of the packet. \begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+\hypertarget{classpacket_a87b76aa12540156e0497fa5b094e2470}{}\label{classpacket_a87b76aa12540156e0497fa5b094e2470} 
+\index{packet@{packet}!get\+Address@{get\+Address}}
+\index{get\+Address@{get\+Address}!packet@{packet}}
+\subsubsection{\texorpdfstring{get\+Address()}{getAddress()}}
+{\footnotesize\ttfamily uint8\+\_\+t packet\+::get\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the address of a packet.
+
+If you receive a packet, call this on the packet to get what address the packet came from.
+
+\begin{DoxyReturn}{Returns}
+Current packet address. 
+\end{DoxyReturn}
+\hypertarget{classpacket_a232661ed34d4278ab9bc81593a1aac64}{}\label{classpacket_a232661ed34d4278ab9bc81593a1aac64} 
+\index{packet@{packet}!get\+Cnt@{get\+Cnt}}
+\index{get\+Cnt@{get\+Cnt}!packet@{packet}}
+\subsubsection{\texorpdfstring{get\+Cnt()}{getCnt()}}
+{\footnotesize\ttfamily uint8\+\_\+t packet\+::get\+Cnt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the counter of a packet.
+
+This is used internally by the library to set the packet counter. This is used to detect duplicate packets.
+
+The user does not need to use this method.
+
+\begin{DoxyReturn}{Returns}
+Current packet counter. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}.\end{Desc}
+\hypertarget{classpacket_a583358f8d3e3361ba62af95ecd0308c2}{}\label{classpacket_a583358f8d3e3361ba62af95ecd0308c2} 
+\index{packet@{packet}!set\+Cnt@{set\+Cnt}}
+\index{set\+Cnt@{set\+Cnt}!packet@{packet}}
+\subsubsection{\texorpdfstring{set\+Cnt()}{setCnt()}}
+{\footnotesize\ttfamily void packet\+::set\+Cnt (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+cnt }\end{DoxyParamCaption})}
+
+Sets the counter of a packet.
+
+This is used internally by the library to set the packet counter. This is used to detect duplicate packets.
+
+The user does not need to use this method. \hypertarget{classpacket_af40fdcda00a1371c60e9e4444df0c13f}{}\label{classpacket_af40fdcda00a1371c60e9e4444df0c13f} 
+\index{packet@{packet}!add\+Payload@{add\+Payload}}
+\index{add\+Payload@{add\+Payload}!packet@{packet}}
+\subsubsection{\texorpdfstring{add\+Payload()}{addPayload()}}
+{\footnotesize\ttfamily bool packet\+::add\+Payload (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Adds any datatype smaller than 30 bytes to the packet. \begin{DoxyNote}{Note}
+There is no way to determine what kind of datatype is in this packet without prior knowledge. 
+
+If you want to send different types of payloads, use a struct or class similar to this packet within the payload that contains metadata on what type of data it is.
+\end{DoxyNote}
+This needs the address of an object and it\textquotesingle{}s size to work correctly. 
+\begin{DoxyCode}
+\textcolor{comment}{//addPayload() example:}
+
+     \textcolor{keywordtype}{int} var = 23;
+     \textcolor{keywordflow}{if} (\hyperlink{classpacket}{packet}.\hyperlink{classpacket_af40fdcda00a1371c60e9e4444df0c13f}{addPayload}( &value, \textcolor{keyword}{sizeof}(var)) == \textcolor{keyword}{false}) \{
+         Serial.println(\textcolor{stringliteral}{"Datatype is too large!"})
+     \}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if the size is within 30 bytes, false if it is not.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This does not allow for you to overwrite the packet. But it is possible to overread from locations in memory that are adjacent to an object! Always use sizeof(your\+Object) to prevent this. 
+\end{DoxyWarning}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+\hypertarget{classpacket_a6d50c91a97477e0de8ff0d3a23341f73}{}\label{classpacket_a6d50c91a97477e0de8ff0d3a23341f73} 
+\index{packet@{packet}!read\+Payload@{read\+Payload}}
+\index{read\+Payload@{read\+Payload}!packet@{packet}}
+\subsubsection{\texorpdfstring{read\+Payload()}{readPayload()}}
+{\footnotesize\ttfamily bool packet\+::read\+Payload (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Retrieves any datatype smaller than 30 bytes from the packet. \begin{DoxyNote}{Note}
+There is no way to determine what kind of datatype is in this packet. 
+
+If you want to send multiple values, use a struct or class similar to this packet within the payload.
+\end{DoxyNote}
+This needs the address of an object and it\textquotesingle{}s size to work correctly.
+
+
+\begin{DoxyCode}
+\textcolor{comment}{//readPayload() example:}
+
+     \textcolor{keywordtype}{int} var;
+     \textcolor{keywordflow}{if} (\hyperlink{classpacket}{packet}.\hyperlink{classpacket_a6d50c91a97477e0de8ff0d3a23341f73}{readPayload}( &var, \textcolor{keyword}{sizeof}(var)) == \textcolor{keyword}{false}) \{
+         Serial.println(\textcolor{stringliteral}{"Datatype is too large!"})
+     \}
+\end{DoxyCode}
+
+
+\begin{DoxyNote}{Note}
+The variable {\itshape var} will have a new value from the packet.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+True if the size is within 30 bytes, false if it is not.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+If you specify a size that is larger than the object you wish to write to, you can write into adjacent memory! 
+
+This {\itshape probably} will crash your program and/or give you junk data in other parts of your code! Always use sizeof(your\+Object) to prevent this. 
+\end{DoxyWarning}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_r_f24_g_8h}{R\+F24\+G.\+h}\item 
+R\+F24\+G.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classpacket">
+<title>packet class Reference</title>
+        <section>
+            <title>Packet object that is sent via the radios</title>
+      <description>
+<para>This is the object that is passed to the radio to be sent. It has the source/destination address, a counter, and the payload inside. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t address</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t cnt</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>byte buffer[30]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Packet public interface</title>
+      <description>
+<para>These are the main methods you need to set, modify, and retrieve data from packets. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classpacket_1ae33ebc35602983d12aa139f050f77938">packet</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classpacket_1adc07da444b32a9105a211862e5b7f6c3">setAddress</link> (
+uint8_t _address)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="classpacket_1a87b76aa12540156e0497fa5b094e2470">getAddress</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="classpacket_1a232661ed34d4278ab9bc81593a1aac64">getCnt</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classpacket_1a583358f8d3e3361ba62af95ecd0308c2">setCnt</link> (
+uint8_t _cnt)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classpacket_1af40fdcda00a1371c60e9e4444df0c13f">addPayload</link> (
+const void * data, const uint8_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="classpacket_1a6d50c91a97477e0de8ff0d3a23341f73">readPayload</link> (
+void * data, const uint8_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+</section>
