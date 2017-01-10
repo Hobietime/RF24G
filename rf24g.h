@@ -209,6 +209,7 @@ public:
 	   * @note Just because a packet was not sent successfully, it does not mean a packet was not received by the target radio! 
 	   * @note This could be due to the sender not receiving the confirmation that the target radio has received the packet.
 	   * @note This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software.
+	   * @note If you are afraid to send the same data twice, don't worry. Duplicate packets are taken care of at the reciving side.
 	   */
 	bool write(const packet* _packet);
 	/**

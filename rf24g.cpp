@@ -105,7 +105,9 @@ bool RF24_G::write(const packet* _packet) {
 		radio.stopListening();
 		success = radio.write(&TX, 32);
 	}
-	TXpacketCounters[dest] = ((TXpacketCounters[dest] + 1) & (PACKET_CNTER - 1) );
+	if (success == true) {
+		TXpacketCounters[dest] = ((TXpacketCounters[dest] + 1) & (PACKET_CNTER - 1) );
+	}
 	radio.startListening();
 	return success;
 }
