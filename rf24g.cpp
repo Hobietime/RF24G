@@ -101,7 +101,7 @@ bool RF24_G::write(const packet* _packet) {
 	success = radio.write(&TX, 32);
 	if (success == false) {
 		radio.startListening();
-		delay(TIMEOUT*myAddress);
+		delayMicroseconds(TIMEOUT*myAddress);
 		radio.stopListening();
 		success = radio.write(&TX, 32);
 	}
