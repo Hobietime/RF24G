@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo5.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24G
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">Simple Abstraction Layer for the nRF24L01</div>
   </td>
@@ -169,7 +169,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Checks if there is a packet received packet to be read</p>
 <dl class="section return"><dt>Returns</dt><dd>True if a packet is available, false if not. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a3">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a6">rf24g_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a2">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a5">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -194,8 +194,10 @@ Public Member Functions</h2></td></tr>
 <dd>
 This could be due to the sender not receiving the confirmation that the target radio has received the packet. </dd>
 <dd>
-This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a7">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a5">rf24g_send.cpp</a>.</dd>
+This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software. </dd>
+<dd>
+If you are afraid to send the same data twice, don't worry. Duplicate packets are taken care of at the reciving side. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a7">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a4">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -216,7 +218,7 @@ This could be fixed with a 3 way handshake, but that is not supported in hardwar
 </div><div class="memdoc">
 <p>Reads a packet. The packet is passed by reference, this means we need to use the &amp; operator.</p>
 <div class="fragment"><div class="line"><span class="comment">//read() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var;</div><div class="line">     <span class="keywordflow">if</span> (radio.read( &amp;<a class="code" href="classpacket.html">packet</a>) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Receive failed!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if a packet was read successfully, false if not. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a4">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a7">rf24g_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a3">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a6">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>

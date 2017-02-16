@@ -44,15 +44,7 @@ public:
    *  These are the main methods you need to set, modify, and retrieve data from packets.
    */
   /**@{*/
-   /**
-	   * Default  Constructor
-	   *
-	   * Creates a new instance of the packet object.  The packet is blank and will need to be modified with the methods below. 
-	   *
-	   *
-	   */
 
-	packet();
 
 	/**
 	   * Sets the address of a packet.  
@@ -69,7 +61,7 @@ public:
 	   *
 	   * @return Current packet address.
 	   */
-	uint8_t getAddress();
+	uint8_t getAddress() const;
 
 	/**
 	   * Gets the counter of a packet.  
@@ -80,7 +72,7 @@ public:
 	   *
 	   * @return Current packet counter.
 	   */
-	uint8_t getCnt();
+	uint8_t getCnt() const;
 
 	/**
 	   * Sets the counter of a packet.  

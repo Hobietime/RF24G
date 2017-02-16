@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo5.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24G
-   &#160;<span id="projectnumber">0.9</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">Simple Abstraction Layer for the nRF24L01</div>
   </td>
@@ -73,14 +73,12 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Packet public interface</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These are the main methods you need to set, modify, and retrieve data from packets. </p>
 </div></td></tr>
-<tr class="memitem:ae33ebc35602983d12aa139f050f77938"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#ae33ebc35602983d12aa139f050f77938">packet</a> ()</td></tr>
-<tr class="separator:ae33ebc35602983d12aa139f050f77938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc07da444b32a9105a211862e5b7f6c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#adc07da444b32a9105a211862e5b7f6c3">setAddress</a> (uint8_t _address)</td></tr>
 <tr class="separator:adc07da444b32a9105a211862e5b7f6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87b76aa12540156e0497fa5b094e2470"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#a87b76aa12540156e0497fa5b094e2470">getAddress</a> ()</td></tr>
-<tr class="separator:a87b76aa12540156e0497fa5b094e2470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a232661ed34d4278ab9bc81593a1aac64"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#a232661ed34d4278ab9bc81593a1aac64">getCnt</a> ()</td></tr>
-<tr class="separator:a232661ed34d4278ab9bc81593a1aac64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0bc7370c7aae30ae5f0fdb7a59eabd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#a1e0bc7370c7aae30ae5f0fdb7a59eabd">getAddress</a> () const</td></tr>
+<tr class="separator:a1e0bc7370c7aae30ae5f0fdb7a59eabd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aff2a1d04bcb3489cee4f1834faa4fe"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#a6aff2a1d04bcb3489cee4f1834faa4fe">getCnt</a> () const</td></tr>
+<tr class="separator:a6aff2a1d04bcb3489cee4f1834faa4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a583358f8d3e3361ba62af95ecd0308c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#a583358f8d3e3361ba62af95ecd0308c2">setCnt</a> (uint8_t _cnt)</td></tr>
 <tr class="separator:a583358f8d3e3361ba62af95ecd0308c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af40fdcda00a1371c60e9e4444df0c13f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpacket.html#af40fdcda00a1371c60e9e4444df0c13f">addPayload</a> (const void *data, const uint8_t size)</td></tr>
@@ -89,28 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6d50c91a97477e0de8ff0d3a23341f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#_a2">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#_a2">rf24g_send.cpp</a>.</dd>
-</dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae33ebc35602983d12aa139f050f77938"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae33ebc35602983d12aa139f050f77938">&sect;&nbsp;</a></span>packet()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">packet::packet </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Default Constructor</p>
-<p>Creates a new instance of the packet object. The packet is blank and will need to be modified with the methods below. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#_a1">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#_a1">rf24g_send.cpp</a>.</dd>
+</dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adc07da444b32a9105a211862e5b7f6c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc07da444b32a9105a211862e5b7f6c3">&sect;&nbsp;</a></span>setAddress()</h2>
 
@@ -128,12 +106,12 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Sets the address of a packet.</p>
 <p>If you are sending a packet, set this to set the destination of the packet. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a3">rf24g_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a2">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
-<a id="a87b76aa12540156e0497fa5b094e2470"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87b76aa12540156e0497fa5b094e2470">&sect;&nbsp;</a></span>getAddress()</h2>
+<a id="a1e0bc7370c7aae30ae5f0fdb7a59eabd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e0bc7370c7aae30ae5f0fdb7a59eabd">&sect;&nbsp;</a></span>getAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,18 +120,19 @@ Public Member Functions</h2></td></tr>
           <td class="memname">uint8_t packet::getAddress </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Gets the address of a packet.</p>
 <p>If you receive a packet, call this on the packet to get what address the packet came from.</p>
 <dl class="section return"><dt>Returns</dt><dd>Current packet address. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a5">rf24g_receive.cpp</a>.</dd>
+</dl>
 </div>
 </div>
-<a id="a232661ed34d4278ab9bc81593a1aac64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a232661ed34d4278ab9bc81593a1aac64">&sect;&nbsp;</a></span>getCnt()</h2>
+<a id="a6aff2a1d04bcb3489cee4f1834faa4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aff2a1d04bcb3489cee4f1834faa4fe">&sect;&nbsp;</a></span>getCnt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,7 +141,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">uint8_t packet::getCnt </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -170,7 +149,7 @@ Public Member Functions</h2></td></tr>
 <p>This is used internally by the library to set the packet counter. This is used to detect duplicate packets.</p>
 <p>The user does not need to use this method.</p>
 <dl class="section return"><dt>Returns</dt><dd>Current packet counter. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a5">rf24g_receive.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a4">rf24g_receive.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -225,7 +204,7 @@ Public Member Functions</h2></td></tr>
 If you want to send different types of payloads, use a struct or class similar to this packet within the payload that contains metadata on what type of data it is.</dd></dl>
 <p>This needs the address of an object and it's size to work correctly. </p><div class="fragment"><div class="line"><span class="comment">//addPayload() example:</span></div><div class="line"></div><div class="line">     <span class="keywordtype">int</span> var = 23;</div><div class="line">     <span class="keywordflow">if</span> (<a class="code" href="classpacket.html">packet</a>.<a class="code" href="classpacket.html#af40fdcda00a1371c60e9e4444df0c13f">addPayload</a>( &amp;value, <span class="keyword">sizeof</span>(var)) == <span class="keyword">false</span>) {</div><div class="line">         Serial.println(<span class="stringliteral">&quot;Datatype is too large!&quot;</span>)</div><div class="line">     }</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>True if the size is within 30 bytes, false if it is not.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>This does not allow for you to overwrite the packet. But it is possible to overread from locations in memory that are adjacent to an object! Always use sizeof(yourObject) to prevent this. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a4">rf24g_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_send_8cpp-example.html#a3">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -263,7 +242,7 @@ If you want to send multiple values, use a struct or class similar to this packe
 <dl class="section warning"><dt>Warning</dt><dd>If you specify a size that is larger than the object you wish to write to, you can write into adjacent memory! </dd>
 <dd>
 This <em>probably</em> will crash your program and/or give you junk data in other parts of your code! Always use sizeof(yourObject) to prevent this. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a6">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a8">rf24g_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="rf24g_receive_8cpp-example.html#a6">rf24g_receive.cpp</a>, and <a class="el" href="rf24g_send_8cpp-example.html#a7">rf24g_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>

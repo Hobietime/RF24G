@@ -10,11 +10,11 @@ void packet::setAddress(uint8_t _address) {
 	address = _address;
 }
 
-uint8_t packet::getAddress() {
+uint8_t packet::getAddress() const {
 	return address;
 }
 
-uint8_t packet::getCnt() {
+uint8_t packet::getCnt() const {
 	return cnt;
 }
 
