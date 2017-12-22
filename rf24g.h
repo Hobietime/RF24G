@@ -253,8 +253,8 @@ public:
  * ## Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.
  * ![The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.](step2.png)
  * ## Press install.  
- * ## Next, add version 0.9 of the RF24G library.
- * ![Next, add version 0.9 of the RF24G library.](step3.PNG)
+ * ## Next, add version 1.0 of the RF24G library.
+ * ![Next, add version 1.0 of the RF24G library.](step3.PNG)
  * ## Press install. 
  * # Wiring
  * ### This tutorial assumes you are using the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
