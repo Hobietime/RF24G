@@ -2,7 +2,7 @@
 
 
 #include <RF24.h>
-#include "RF24G.h"
+#include "rf24g.h"
 
 
 
