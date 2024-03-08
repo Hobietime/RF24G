@@ -18,7 +18,7 @@ void loop() {
   // declare packet variable
   packet receiver;
   // declare string to place the packet payload in
-  char payload[30];
+  uint16_t payload;
   // check if the radio has any packets in the receive queue
   if (test.available() == true) {
     Serial.println("packet received!");
@@ -32,10 +32,11 @@ void loop() {
     Serial.print("address: ");
     Serial.println(receiver.getAddress());
     // load the payload into the payload string
-    receiver.readPayload(payload, 30); 
+    receiver.readPayload(&payload, sizeof(payload)); 
     // print the payload 
     Serial.print("payload: ");
     Serial.println(payload);
+
     // since the address in the packet object is already
     // set to the address of the receiver, it doesn't need to be changed
     // hence, we can write the packet back to the receiver

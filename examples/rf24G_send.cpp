@@ -16,9 +16,9 @@ void setup() {
 
 void loop() {
   // create a random number
-  uint8_t randNumber = random(300);
+  uint16_t randNumber = random(65535);
   // create a variable to store the received number
-  int actual;
+  uint16_t actual;
   // declare the sender packet variable
   packet sender;
   // declare the receiver packet variable
@@ -26,21 +26,24 @@ void loop() {
   // set the destination of the packet to address 1
   sender.setAddress(1);
   // write the payload to the packet
-  sender.addPayload(&randNumber, sizeof(int));
+  sender.addPayload(&randNumber, sizeof(randNumber));
   // print out the original payload
   Serial.print("original number:");
   Serial.println(randNumber);
   // send the packet, if it is successful try to read back the packet
   if (test.write(&sender) == true) {
+    // wait 500 ms then check for a received packet
+    delay(500);
     // wait until a packet is received
-    while (test.available() != true);
-    // copy the packet into the receiver object
-    test.read(&receiver);
-    // copy the payload into the actual value
-    receiver.readPayload(&actual, sizeof(int));
-    // print out the actual value received
-    Serial.print("received number:");
-    Serial.println(actual);
+    if (test.available() == true){
+      // copy the packet into the receiver object
+      test.read(&receiver);
+      // copy the payload into the actual value
+      receiver.readPayload(&actual, sizeof(randNumber));
+      // print out the actual value received
+      Serial.print("received number:");
+      Serial.println(actual);
+    }
     
   }
 
