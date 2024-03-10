@@ -5,7 +5,7 @@
  * @date 19 Sep 2016
  * @brief A simple interface for the RF24 radio that abstracts thmr20's Driver.
  *
- * This library provides a simple way for up to 6 nRF24L01 radios to communicate with each other.
+ * This library provides a simple way for up to 7 nRF24L01 radios to communicate with each other.
  *
  * @see http://tmrh20.github.io/RF24/
  * @see https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
@@ -281,7 +281,7 @@ public:
  * ### More in-depth instructions can be found at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  * # General concepts
  * ## This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.
- * ### Up to 6 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5).
+ * ### Up to 7 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5, 6).
  * ### Each radio is initialized using an #RF24_G object, which provides the ability to read and write packets.
  * ### This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.
  * ### The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet.  More info can be seen it the #RF24_G::read() docs.
