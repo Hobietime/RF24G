@@ -281,14 +281,12 @@ private:
  * ## First, go to sketch→Include Library→Manage Libraries...
  * ![First, go to sketch→Include Library→Manage Libraries...](step1.png)
  * ## The library manager will show as an additional window.  
- * ## Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.
- * ![The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.](step2.png)
- * ## Press install.  
- * ## Next, add version 1.0 of the RF24G library.
- * ![Next, add version 1.0 of the RF24G library.](step3.PNG)
+ * ## Next, add the latest version of the RF24G library.
+ * ![Next, add the latest version of the RF24G library.](step3.PNG)
  * ## Press install. 
+ * ## It should prompt you to install the nrf_to_nrf and RF24 libraries as well 
  * # Wiring
- * ### This tutorial assumes you are using the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
+ * ### This tutorial assumes you are using nrf52x modules or the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
  * ### recouses for this tutorial are based on Terry's instructions at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  * ## First, attach the either the high power or low power radio module to the base module
  * ![LOW_POWER](LP_MODULE.jpg)
