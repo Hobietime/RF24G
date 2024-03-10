@@ -15,11 +15,15 @@
 #ifndef __RF24G_H__
 #define __RF24G_H__
 
+#if defined(ARDUINO_ARCH_NRF52) || defined(ARDUINO_ARCH_NRF52840)
+#include <nrf_to_nrf.h>
+#else
 #include "RF24.h"
+#endif 
 
 #define PACKET_CNTER 32
 
-#define MAX_NODES 6
+#define MAX_NODES 7
 
 #define BASE_ADDRESS 0xDEADBEEF00LL
 
@@ -27,6 +31,8 @@
 #define TIMEOUT 5
 
 class packet {
+ public:
+    packet();
 	/**
    * @name Packet object that is sent via the radios
    *
@@ -142,10 +148,14 @@ class RF24_G {
    * This is an example on how to receive using the RF24_G class
    */
 private:
-	int myAddress;
+	uint8_t myAddress;
 	uint8_t TXpacketCounters[MAX_NODES];
 	uint8_t RXpacketCounters[MAX_NODES];
+    #if defined NRF52_RADIO_LIBRARY
+
+    #else
 	RF24 radio{8,9};
+    #endif
 public:
 /**
    * @name Primary public interface
@@ -162,6 +172,7 @@ public:
 	   */
 	RF24_G();
 
+    RF24_G(uint8_t address);
 	/**
 	   * Constructor
 	   *
@@ -203,7 +214,7 @@ public:
 	   * @note This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software.
 	   * @note If you are afraid to send the same data twice, don't worry. Duplicate packets are taken care of at the reciving side.
 	   */
-	bool write(const packet* _packet);
+	bool write(packet* _packet);
 	/**
 	   * Reads a packet.
 	   * The packet is passed by reference, this means we need to use the & operator.
@@ -229,7 +240,10 @@ public:
 	   * 
 	   */
 	bool setChannel(uint8_t channel);
-
+    
+    void setup(uint8_t address, uint8_t _cepin, uint8_t _cspin);
+    
+    packet receive;
 };
 
 /**
