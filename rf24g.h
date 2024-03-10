@@ -5,9 +5,10 @@
  * @date 19 Sep 2016
  * @brief A simple interface for the RF24 radio that abstracts thmr20's Driver.
  *
- * This library provides a simple way for up to 7 nRF24L01 radios to communicate with each other.
+ * This library provides a simple way for up to 7 nRF24L01 and/or nrf52x radios to communicate with each other.
  *
  * @see http://tmrh20.github.io/RF24/
+ * @see https://tmrh20.github.io/nrf_to_nrf/html
  * @see https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  */
 
