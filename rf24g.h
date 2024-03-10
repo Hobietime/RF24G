@@ -172,11 +172,19 @@ public:
 	   */
 	RF24_G();
 
-    RF24_G(uint8_t address);
 	/**
 	   * Constructor
 	   *
-	   * Creates a new instance of the radio object.  This configures tmrh20's driver.  Before using, you create an instance
+	   * Creates a new instance of the radio object for NRF52x devices. This configures tmrh20's driver.  Before using, you create an instance
+	   *
+	   * @param address The address of tis radio instance
+	   */	
+    RF24_G(uint8_t address);
+
+	/**
+	   * Constructor
+	   *
+	   * Creates a new instance of the radio object for RF24 devices.  This configures tmrh20's driver.  Before using, you create an instance
 	   * and send in the unique pins that this chip is connected to.
 	   * If you have followed the wiring diagram on the first page, the CE pin should be 7 and the CS pin should be 8. 
 	   *
@@ -240,10 +248,18 @@ public:
 	   * 
 	   */
 	bool setChannel(uint8_t channel);
-    
+
+private:
+    /**
+       * Internal function to configure the radio and settings
+       */    
     void setup(uint8_t address, uint8_t _cepin, uint8_t _cspin);
     
+    /**
+       * Packet for reception of data
+       */
     packet receive;
+    
 };
 
 /**
