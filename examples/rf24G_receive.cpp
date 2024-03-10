@@ -15,12 +15,13 @@ void setup() {
 }
 
 void loop() {
-  // declare packet variable
-  packet receiver;
-  // declare string to place the packet payload in
-  uint16_t payload;
+
   // check if the radio has any packets in the receive queue
   if (test.available() == true) {
+    // declare packet variable
+    packet receiver;
+    // declare string to place the packet payload in
+    uint16_t payload;
     Serial.println("packet received!");
     // read the data into the packet 
     test.read(&receiver);

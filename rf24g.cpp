@@ -106,7 +106,7 @@ void RF24_G::setup(uint8_t address, uint8_t _cepin, uint8_t _cspin){
     #if defined NRF52_RADIO_LIBRARY
       radio.setPALevel(NRF_PA_MAX);
     #else
-      radio.setPALevel(RF24_PA_MIN); 
+      radio.setPALevel(RF24_PA_MAX); 
     #endif
     radio.startListening();                 // Start listening
 
