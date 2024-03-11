@@ -3,14 +3,12 @@
  * for packets and forwards them back to the sender.
  */
 
-#include <printf.h>
 #include <rf24g.h>
 // we must instantiate the RF24_G object outside of the setup function so it is available in the loop function
 RF24_G test;
 
 void setup() {
   Serial.begin(9600);
-  printf_begin();
   // create the RF24G object with an address of 1, using pins 7 and 8
   test = RF24_G(1, 7, 8);
   // print out the details of the radio's configuration (useful for debug)
