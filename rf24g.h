@@ -26,6 +26,8 @@
 
 #define MAX_NODES 7
 
+#define MAX_PAYLOAD_SIZE 32
+
 #define BASE_ADDRESS 0xDEADBEEF00LL
 
 
@@ -43,7 +45,7 @@ class packet {
 private:
 	uint8_t address;
 	uint8_t cnt;
-	byte buffer[30];
+	byte buffer[MAX_PAYLOAD_SIZE-2];
 public:
 /**
    * @name Packet public interface

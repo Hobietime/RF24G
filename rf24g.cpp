@@ -92,6 +92,7 @@ void RF24_G::setup(uint8_t address, uint8_t _cepin, uint8_t _cspin){
   	radio.setChannel(108);
 	radio.setAutoAck(1);                    // Ensure autoACK is enabled
 	radio.setRetries(5 + myAddress,15);                 // Smallest time between retries, max no. of retries
+	radio.setPayloadSize(MAX_PAYLOAD_SIZE);
 	int pipenum = 0;
 	for (popIterator = 0; popIterator < (MAX_NODES); popIterator++) {
 		if ((popIterator) != myAddress) {
@@ -133,10 +134,10 @@ bool RF24_G::write(packet* _packet) {
 	radio.openWritingPipe((BASE_ADDRESS + ((myAddress) + ((MAX_NODES + 1)  *  dest))));
 	Serial.print("writing to this address: ");
 	Serial.println((int)(((myAddress ) + ((MAX_NODES + 1)  *  dest))));
-	success = radio.write(TX, 32);
+	success = radio.write(TX, MAX_PAYLOAD_SIZE);
 	if (success == false) {
 		delayMicroseconds(TIMEOUT*myAddress);
-		success = radio.write(TX, 32);
+		success = radio.write(TX, MAX_PAYLOAD_SIZE);
 	}
 	radio.startListening();
 	if (success == true) {
@@ -149,7 +150,7 @@ bool RF24_G::write(packet* _packet) {
 bool RF24_G::read(packet* _packet) {
 
 	while (radio.available()) {
-		radio.read(&receive, 32);
+		radio.read(&receive, MAX_PAYLOAD_SIZE);
 		*_packet = receive;        
 		if(receive.getCnt() != RXpacketCounters[receive.getAddress()]){
 			RXpacketCounters[receive.getAddress()] = ((RXpacketCounters[receive.getAddress()] + 1) & (PACKET_CNTER - 1) );
