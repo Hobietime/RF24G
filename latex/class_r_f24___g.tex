@@ -1,0 +1,147 @@
+\hypertarget{class_r_f24___g}{}\section{R\+F24\+\_\+G Class Reference}
+\label{class_r_f24___g}\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf Primary public interface}\par
+{\em These are the main methods you need to send and receive data. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_f24___g_a6e389aa7e1856c4266e144bb4da3348a}{R\+F24\+\_\+G} ()
+\item 
+\hyperlink{class_r_f24___g_a014c20a25d290cff2476400487bb4f97}{R\+F24\+\_\+G} (uint8\+\_\+t address, uint8\+\_\+t \+\_\+cepin, uint8\+\_\+t \+\_\+cspin)
+\item 
+bool \hyperlink{class_r_f24___g_a7298349aea33bf12acdf242b7527302b}{available} ()
+\item 
+bool \hyperlink{class_r_f24___g_ac10bdf625f27df73183788a6358d2e71}{write} (const \hyperlink{classpacket}{packet} $\ast$\+\_\+packet)
+\item 
+bool \hyperlink{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4}{read} (\hyperlink{classpacket}{packet} $\ast$\+\_\+packet)
+\item 
+bool \hyperlink{class_r_f24___g_a84472b6c06d38d0e04d783056d1b2698}{set\+Channel} (uint8\+\_\+t channel)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_f24___g_a6e389aa7e1856c4266e144bb4da3348a}{}\label{class_r_f24___g_a6e389aa7e1856c4266e144bb4da3348a} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{R\+F24\+\_\+\+G()}{RF24\_G()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+F24\+\_\+\+G\+::\+R\+F24\+\_\+G (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor
+
+Creates a new instance of the radio object. This configures tmrh20\textquotesingle{}s driver to default settings. Use this if you want to instantiate the radio class, but initialize it later. \hypertarget{class_r_f24___g_a014c20a25d290cff2476400487bb4f97}{}\label{class_r_f24___g_a014c20a25d290cff2476400487bb4f97} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{R\+F24\+\_\+\+G()}{RF24\_G()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+F24\+\_\+\+G\+::\+R\+F24\+\_\+G (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{\+\_\+cepin,  }\item[{uint8\+\_\+t}]{\+\_\+cspin }\end{DoxyParamCaption})}
+
+Constructor
+
+Creates a new instance of the radio object. This configures tmrh20\textquotesingle{}s driver. Before using, you create an instance and send in the unique pins that this chip is connected to. If you have followed the wiring diagram on the first page, the CE pin should be 7 and the CS pin should be 8.
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address of tis radio instance \\
+\hline
+{\em \+\_\+cepin} & The pin attached to Chip Enable (CE) pin on the RF module \\
+\hline
+{\em \+\_\+cspin} & The pin attached to Chip Select (CS) pin \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_f24___g_a7298349aea33bf12acdf242b7527302b}{}\label{class_r_f24___g_a7298349aea33bf12acdf242b7527302b} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!available@{available}}
+\index{available@{available}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily bool R\+F24\+\_\+\+G\+::available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks if there is a packet received packet to be read
+
+\begin{DoxyReturn}{Returns}
+True if a packet is available, false if not. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+\hypertarget{class_r_f24___g_ac10bdf625f27df73183788a6358d2e71}{}\label{class_r_f24___g_ac10bdf625f27df73183788a6358d2e71} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!write@{write}}
+\index{write@{write}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily bool R\+F24\+\_\+\+G\+::write (\begin{DoxyParamCaption}\item[{const \hyperlink{classpacket}{packet} $\ast$}]{\+\_\+packet }\end{DoxyParamCaption})}
+
+Writes data to a packet. The packet is passed by reference, this means we need to use the \& operator.
+
+
+\begin{DoxyCode}
+\textcolor{comment}{//write() example:}
+
+     \textcolor{keywordtype}{int} var;
+     \textcolor{keywordflow}{if} (radio.write( &\hyperlink{classpacket}{packet}) == \textcolor{keyword}{false}) \{
+         Serial.println(\textcolor{stringliteral}{"Transmission failed!"})
+     \}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if a packet was sent successfully, false if not. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Just because a packet was not sent successfully, it does not mean a packet was not received by the target radio! 
+
+This could be due to the sender not receiving the confirmation that the target radio has received the packet. 
+
+This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+\hypertarget{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4}{}\label{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!read@{read}}
+\index{read@{read}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily bool R\+F24\+\_\+\+G\+::read (\begin{DoxyParamCaption}\item[{\hyperlink{classpacket}{packet} $\ast$}]{\+\_\+packet }\end{DoxyParamCaption})}
+
+Reads a packet. The packet is passed by reference, this means we need to use the \& operator.
+
+
+\begin{DoxyCode}
+\textcolor{comment}{//read() example:}
+
+     \textcolor{keywordtype}{int} var;
+     \textcolor{keywordflow}{if} (radio.read( &\hyperlink{classpacket}{packet}) == \textcolor{keyword}{false}) \{
+         Serial.println(\textcolor{stringliteral}{"Receive failed!"})
+     \}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+True if a packet was read successfully, false if not. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples\+: ]\par
+\hyperlink{_r_f24_g__receive_8cpp-example}{R\+F24\+G\+\_\+\+Receive.\+cpp}, and \hyperlink{_r_f24_g__send_8cpp-example}{R\+F24\+G\+\_\+\+Send.\+cpp}.\end{Desc}
+\hypertarget{class_r_f24___g_a84472b6c06d38d0e04d783056d1b2698}{}\label{class_r_f24___g_a84472b6c06d38d0e04d783056d1b2698} 
+\index{R\+F24\+\_\+G@{R\+F24\+\_\+G}!set\+Channel@{set\+Channel}}
+\index{set\+Channel@{set\+Channel}!R\+F24\+\_\+G@{R\+F24\+\_\+G}}
+\subsubsection{\texorpdfstring{set\+Channel()}{setChannel()}}
+{\footnotesize\ttfamily bool R\+F24\+\_\+\+G\+::set\+Channel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+Sets the channel to use \begin{DoxyNote}{Note}
+The available channels are 0-\/125, but channels 108+ are out of the wifi band and recommended.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+True if the channel was set successfully, false if not. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_r_f24_g_8h}{R\+F24\+G.\+h}\item 
+R\+F24\+G.\+cpp\end{DoxyCompactItemize}

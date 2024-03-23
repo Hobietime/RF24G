@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>RF24G</title>
+    </info>
+        <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="md__r_e_a_d_m_e.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <chapter>
+        <title>Class Documentation</title>
+        <xi:include href="classpacket.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="class_r_f24___g.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="_r_e_a_d_m_e_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_r_f24_g_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_r_f24_g_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Example Documentation</title>
+        <xi:include href="_r_f24_g__receive_8cpp-example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_r_f24_g__send_8cpp-example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>

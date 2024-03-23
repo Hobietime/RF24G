@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_r_f24___g">
+<title>RF24_G class Reference</title>
+        <section>
+            <title>Primary public interface</title>
+      <description>
+<para>These are the main methods you need to send and receive data. </para>
+</description>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_r_f24___g_1a6e389aa7e1856c4266e144bb4da3348a">RF24_G</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_r_f24___g_1a014c20a25d290cff2476400487bb4f97">RF24_G</link> (
+uint8_t address, uint8_t _cepin, uint8_t _cspin)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_r_f24___g_1a7298349aea33bf12acdf242b7527302b">available</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_r_f24___g_1ac10bdf625f27df73183788a6358d2e71">write</link> (
+const <link linkend="classpacket">packet</link> * _packet)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_r_f24___g_1a00d022e73f823087f1b2185545afbaa4">read</link> (
+<link linkend="classpacket">packet</link> * _packet)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_r_f24___g_1a84472b6c06d38d0e04d783056d1b2698">setChannel</link> (
+uint8_t channel)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int myAddress</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t TXpacketCounters[MAX_NODES]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t RXpacketCounters[MAX_NODES]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>RF24 radio</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Member Data Documentation</title>
+        </section>
+</section>

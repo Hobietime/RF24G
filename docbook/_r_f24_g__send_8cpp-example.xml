@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_r_f24_g__send_8cpp-example">
+    <title>RF24G_Send.cpp</title>
+
+<para><literallayout><computeroutput>
+<emphasis class="comment">/*&#32;This&#32;sketch&#32;sends&#32;a&#32;packet&#32;with&#32;random&#32;data&#32;to&#32;another&#32;radio&#32;and&#32;waits&#32;for&#32;</emphasis>
+<emphasis class="comment">&#32;*&#32;the&#32;packet&#32;to&#32;be&#32;sent&#32;back.&#32;&#32;It&#32;prints&#32;out&#32;the&#32;random&#32;data&#32;and&#32;the&#32;received&#32;data,&#32;which&#32;should&#32;be&#32;the&#32;same.</emphasis>
+<emphasis class="comment">&#32;*/</emphasis>
+
+<emphasis class="preprocessor">#include&#32;&lt;<link linkend="_r_f24_g_8h">RF24G.h</link>&gt;</emphasis>
+<emphasis class="comment">//&#32;We&#32;must&#32;instantiate&#32;the&#32;RF24_G&#32;object&#32;outside&#32;of&#32;the&#32;setup&#32;function&#32;so&#32;it&#32;is&#32;available&#32;in&#32;the&#32;loop&#32;function</emphasis>
+<link linkend="class_r_f24___g">RF24_G</link>&#32;test;
+<emphasis class="keywordtype">void</emphasis>&#32;setup()&#32;{
+&#32;&#32;&#32;&#32;Serial.begin(9600);
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;create&#32;the&#32;RF24G&#32;object&#32;with&#32;an&#32;address&#32;of&#32;4,&#32;using&#32;pins&#32;7&#32;and&#32;8</emphasis>
+&#32;&#32;&#32;&#32;test&#32;=&#32;<link linkend="class_r_f24___g">RF24_G</link>(4,&#32;7,&#32;8);
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;print&#32;out&#32;the&#32;details&#32;of&#32;the&#32;radio&apos;s&#32;configuration&#32;(useful&#32;for&#32;debug)</emphasis>
+&#32;&#32;&#32;&#32;test.radio.printDetails();
+&#32;&#32;&#32;&#32;
+}
+
+<emphasis class="keywordtype">void</emphasis>&#32;loop()&#32;{
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;create&#32;a&#32;random&#32;number</emphasis>
+&#32;&#32;&#32;&#32;uint8_t&#32;randNumber&#32;=&#32;random(300);
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;create&#32;a&#32;variable&#32;to&#32;store&#32;the&#32;received&#32;number</emphasis>
+&#32;&#32;&#32;&#32;uint8_t&#32;actual;
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;declare&#32;the&#32;sender&#32;packet&#32;variable</emphasis>
+&#32;&#32;&#32;&#32;<link linkend="classpacket">packet</link>&#32;sender;
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;declare&#32;the&#32;receiver&#32;packet&#32;variable</emphasis>
+&#32;&#32;&#32;&#32;<link linkend="classpacket">packet</link>&#32;receiver;
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;set&#32;the&#32;destination&#32;of&#32;the&#32;packet&#32;to&#32;address&#32;1</emphasis>
+&#32;&#32;&#32;&#32;sender.<link linkend="classpacket_1adc07da444b32a9105a211862e5b7f6c3">setAddress</link>(1);
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;write&#32;the&#32;payload&#32;to&#32;the&#32;packet</emphasis>
+&#32;&#32;&#32;&#32;sender.<link linkend="classpacket_1af40fdcda00a1371c60e9e4444df0c13f">addPayload</link>(&amp;randNumber,&#32;<emphasis class="keyword">sizeof</emphasis>(<emphasis class="keywordtype">int</emphasis>));
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;print&#32;out&#32;the&#32;original&#32;payload</emphasis>
+&#32;&#32;&#32;&#32;Serial.print(<emphasis class="stringliteral">&quot;original&#32;number:&quot;</emphasis>);
+&#32;&#32;&#32;&#32;Serial.println(randNumber);
+&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;send&#32;the&#32;packet,&#32;if&#32;it&#32;is&#32;successful&#32;try&#32;to&#32;read&#32;back&#32;the&#32;packet</emphasis>
+&#32;&#32;&#32;&#32;<emphasis class="keywordflow">if</emphasis>&#32;(test.<link linkend="class_r_f24___g_1ac10bdf625f27df73183788a6358d2e71">write</link>(sender)&#32;==&#32;<emphasis class="keyword">true</emphasis>)&#32;{
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;wait&#32;until&#32;a&#32;packet&#32;is&#32;received</emphasis>
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis class="keywordflow">while</emphasis>&#32;(test.<link linkend="class_r_f24___g_1a7298349aea33bf12acdf242b7527302b">available</link>()&#32;!=&#32;<emphasis class="keyword">true</emphasis>);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;copy&#32;the&#32;packet&#32;into&#32;the&#32;receiver&#32;object</emphasis>
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test.<link linkend="class_r_f24___g_1a00d022e73f823087f1b2185545afbaa4">read</link>(&amp;receiver);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;copy&#32;the&#32;payload&#32;into&#32;the&#32;actual&#32;value</emphasis>
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;receiver.<link linkend="classpacket_1a6d50c91a97477e0de8ff0d3a23341f73">readPayload</link>(actual,&#32;<emphasis class="keyword">sizeof</emphasis>(<emphasis class="keywordtype">int</emphasis>));
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis class="comment">//&#32;print&#32;out&#32;the&#32;actual&#32;value&#32;received</emphasis>
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Serial.print(<emphasis class="stringliteral">&quot;received&#32;number:&quot;</emphasis>);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Serial.println(actual);
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+&#32;&#32;&#32;&#32;}
+
+}
+</computeroutput></literallayout> </para>
+
+</section>

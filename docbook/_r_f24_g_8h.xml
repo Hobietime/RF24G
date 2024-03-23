@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_r_f24_g_8h">
+    <title>RF24G.h File Reference</title>
+    <programlisting>#include &quot;RF24.h&quot;</programlisting>
+        <section>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classpacket">packet</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_r_f24___g">RF24_G</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_r_f24_g_8h_1a06b6a257209329396f0ad23d38547593">PACKET_CNTER</link> 32</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_r_f24_g_8h_1abd2aacdca9cb2a1a30f3392256b96ea3">MAX_NODES</link> 6</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_r_f24_g_8h_1a78cf30a084548c226ac61d0f5c3f1981">BASE_ADDRESS</link> 0xDEADBEEF00LL</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_r_f24_g_8h_1a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</link> 5</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>A simple interface for the RF24 radio that abstracts thmr20&apos;s Driver. </para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Caio Motta </para>
+</formalpara>
+<formalpara><title>Date: </title>
+
+<para>19 Sep 2016 This library provides a simple way for up to 6 nRF24L01 radios to communicate with each other.</para>
+</formalpara>
+<formalpara><title>See also: </title>
+
+<para><link xlink:href="http://tmrh20.github.io/RF24/">http://tmrh20.github.io/RF24/</link> </para>
+<simplesect/>
+<para><link xlink:href="https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo">https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo</link> </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/Users/Caio/Documents/Arduino/libraries/RF24G/RF24G.h</para>
+    </simplesect>
+</section>

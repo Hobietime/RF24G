@@ -1,0 +1,57 @@
+\hypertarget{_r_f24_g__receive_8cpp-example}{}\section{R\+F24\+G\+\_\+\+Receive.\+cpp}
+This is an example on how to receive using the \hyperlink{class_r_f24___g}{R\+F24\+\_\+G} class
+
+
+\begin{DoxyCodeInclude}
+
+\textcolor{comment}{/* This is a small sketch that listens }
+\textcolor{comment}{ * for packets and forwards them back to the sender.}
+\textcolor{comment}{ */}
+
+\textcolor{preprocessor}{#include <\hyperlink{_r_f24_g_8h}{RF24G.h}>}
+\textcolor{comment}{// we must instantiate the RF24\_G object outside of the setup function so it is available in the loop
+       function}
+\hyperlink{class_r_f24___g}{RF24\_G} test;
+\textcolor{keywordtype}{int} i = 0;
+\textcolor{keywordtype}{void} setup() \{
+    Serial.begin(9600);
+    \textcolor{comment}{// create the RF24G object with an address of 1, using pins 7 and 8}
+    test = \hyperlink{class_r_f24___g}{RF24\_G}(1, 7, 8);
+    \textcolor{comment}{// print out the details of the radio's configuration (useful for debug)}
+    test.radio.printDetails();
+\}
+
+\textcolor{keywordtype}{void} loop() \{
+    \textcolor{comment}{// declare packet variable}
+    \hyperlink{classpacket}{packet} receiver;
+    \textcolor{comment}{// declare string to place the packet payload in}
+    \textcolor{keywordtype}{char} payload[30]
+    \textcolor{comment}{// check if the radio has any packets in the receive queue}
+    \textcolor{keywordflow}{if} (test.\hyperlink{class_r_f24___g_a7298349aea33bf12acdf242b7527302b}{available}() == \textcolor{keyword}{true}) \{
+        Serial.println(\textcolor{stringliteral}{"packet received!"})
+        \textcolor{comment}{// read the data into the packet }
+        test.\hyperlink{class_r_f24___g_a00d022e73f823087f1b2185545afbaa4}{read}(&receiver);
+        \textcolor{comment}{// print the packet number of the received packet}
+        \textcolor{comment}{// if these are not consecutive packets are being lost due to timeouts.}
+        Serial.print(\textcolor{stringliteral}{"count: "})
+        Serial.println(receiver.\hyperlink{classpacket_a232661ed34d4278ab9bc81593a1aac64}{getCnt}());
+        \textcolor{comment}{// print the source address of the received packet}
+        Serial.print(\textcolor{stringliteral}{"address: "})
+        Serial.println(receiver.getaddress());
+        \textcolor{comment}{// load the payload into the payload string}
+        receiver.\hyperlink{classpacket_a6d50c91a97477e0de8ff0d3a23341f73}{readPayload}(payload, 30) 
+        \textcolor{comment}{// print the payload }
+        Serial.print(\textcolor{stringliteral}{"payload: "})
+        Serial.println(payload);
+        \textcolor{comment}{// since the address in the packet object is already}
+        \textcolor{comment}{// set to the address of the receiver, it doesn't need to be changed}
+        \textcolor{comment}{// hence, we can write the packet back to the receiver}
+        \textcolor{comment}{// we may check to see if the transmission failed, if so we just drop the packet}
+        \textcolor{keywordflow}{if} (test.\hyperlink{class_r_f24___g_ac10bdf625f27df73183788a6358d2e71}{write}(receiver) == \textcolor{keyword}{false}) \{
+            Serial.println(\textcolor{stringliteral}{"transmit back failed!"});
+            Serial.println(\textcolor{stringliteral}{"dropping packet..."});
+        \}
+    \}
+\}
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>A simple interface for the RF24 radio that abstracts thmr20&apos;s driver.</title>
+<section xml:id="index_1About">
+<title>About</title>
+
+<para>The nRF24L01+ wireless transceiver board allow for wireless communication between two or more radios at distances greater than Bluetooth or standard WiFi. This tutorial includes an overview of the different types or radios available in the store, wiring the radios to an Arduino, an example sketch that allows for two way communication, and finally tips and tricks to increase your success with the radios.</para>
+</section>
+<section xml:id="index_1Purchasing">
+<title>Purchasing</title>
+
+<para>There are two versions available in the UCSB ECE store. They also can be purchased on the yourduino website (<link xlink:href="http://www.yourduino.com/sunshop/">http://www.yourduino.com/sunshop/</link>) The high power transceiver has amplifiers and an external antenna. It has been tested to work at ranges in excess of 350 meters. The low power transceivers have an internal antenna and work at about 20 meters. The two different types can work together. Se the tips and tricks section for more info.</para>
+</section>
+<section xml:id="index_1Installation">
+<title>Installation</title>
+
+<para>This library requires thmr20&apos;s radio driver. Both can be found in the Arduino repository.</para>
+
+<para><formalpara><title>First, go to sketch→Include Library→Manage Libraries...</title></formalpara>
+</para>
+
+<para> <formalpara><title>The library manager will show as an additional window.</title></formalpara>
+</para>
+
+<para><formalpara><title>Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.</title></formalpara>
+</para>
+
+<para> <formalpara><title>Press install.</title></formalpara>
+</para>
+
+<para><formalpara><title>Next, add version 0.9 of the RF24G library.</title></formalpara>
+</para>
+
+<para> <formalpara><title>Press install.</title></formalpara>
+</para>
+
+<para><formalpara><title>Wiring</title></formalpara>
+</para>
+
+<para><formalpara><title>This tutorial assumes you are using the RF24 modules sold here: <link xlink:href="http://yourduino.com/sunshop//index.php?l=product_detail&amp;p=489">http://yourduino.com/sunshop//index.php?l=product_detail&amp;p=489</link></title></formalpara>
+</para>
+
+<para><formalpara><title>recouses for this tutorial are based on Terry&apos;s instructions at <link xlink:href="https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo">https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo</link></title></formalpara>
+</para>
+
+<para><formalpara><title>First, attach the either the high power or low power radio module to the base module</title></formalpara>
+</para>
+
+<para>  <formalpara><title>Next, connect jumpers between the Arduino and the base module using this table</title></formalpara>
+</para>
+
+<para> <formalpara><title>More in-depth instructions can be found at <link xlink:href="https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo">https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo</link></title></formalpara>
+</para>
+
+<para><formalpara><title>General concepts</title></formalpara>
+</para>
+
+<para><formalpara><title>This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.</title></formalpara>
+</para>
+
+<para><formalpara><title>Up to 6 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5).</title></formalpara>
+</para>
+
+<para><formalpara><title>Each radio is initialized using an <link linkend="class_r_f24___g">RF24_G</link> object, which provides the ability to read and write packets.</title></formalpara>
+</para>
+
+<para><formalpara><title>This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.</title></formalpara>
+</para>
+
+<para><formalpara><title>The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet. More info can be seen it the <link linkend="class_r_f24___g_1a00d022e73f823087f1b2185545afbaa4">RF24_G::read()</link> docs.</title></formalpara>
+</para>
+
+<para><formalpara><title>The <link linkend="classpacket">packet</link> class is an object that contains all the necessary information to bring data to and from each radio, as well as let each radio keep track of any dropped packets.</title></formalpara>
+</para>
+
+<para><formalpara><title>A <link linkend="classpacket">packet</link> allows for any playload that is 30 bytes long. The payload can be any type or array of types.</title></formalpara>
+</para>
+
+<para><formalpara><title>How to use this documentation.</title></formalpara>
+</para>
+
+<para><formalpara><title>Read the <link linkend="classpacket">packet</link> and <link linkend="class_r_f24___g">RF24_G</link> class documentation. It provides a description of what every class and object in the library is for.b</title></formalpara>
+</para>
+
+<para><formalpara><title>Check the examples to understand the way the two classes are used to send data from one radio to another.</title></formalpara>
+</para>
+</section>
+
+</chapter>
