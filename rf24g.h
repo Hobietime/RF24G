@@ -5,9 +5,10 @@
  * @date 19 Sep 2016
  * @brief A simple interface for the RF24 radio that abstracts thmr20's Driver.
  *
- * This library provides a simple way for up to 6 nRF24L01 radios to communicate with each other.
+ * This library provides a simple way for up to 7 nRF24L01 and/or nrf52x radios to communicate with each other.
  *
  * @see http://tmrh20.github.io/RF24/
+ * @see https://tmrh20.github.io/nrf_to_nrf/html
  * @see https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  */
 
@@ -15,11 +16,17 @@
 #ifndef __RF24G_H__
 #define __RF24G_H__
 
+#if defined(ARDUINO_ARCH_NRF52) || defined(ARDUINO_ARCH_NRF52840)
+#include <nrf_to_nrf.h>
+#else
 #include "RF24.h"
+#endif 
 
 #define PACKET_CNTER 32
 
-#define MAX_NODES 6
+#define MAX_NODES 7
+
+#define MAX_PAYLOAD_SIZE 32
 
 #define BASE_ADDRESS 0xDEADBEEF00LL
 
@@ -27,6 +34,8 @@
 #define TIMEOUT 5
 
 class packet {
+ public:
+    packet();
 	/**
    * @name Packet object that is sent via the radios
    *
@@ -36,7 +45,7 @@ class packet {
 private:
 	uint8_t address;
 	uint8_t cnt;
-	byte buffer[30];
+	byte buffer[MAX_PAYLOAD_SIZE-2];
 public:
 /**
    * @name Packet public interface
@@ -142,10 +151,14 @@ class RF24_G {
    * This is an example on how to receive using the RF24_G class
    */
 private:
-	int myAddress;
+	uint8_t myAddress;
 	uint8_t TXpacketCounters[MAX_NODES];
 	uint8_t RXpacketCounters[MAX_NODES];
+    #if defined NRF52_RADIO_LIBRARY
+
+    #else
 	RF24 radio{8,9};
+    #endif
 public:
 /**
    * @name Primary public interface
@@ -165,7 +178,16 @@ public:
 	/**
 	   * Constructor
 	   *
-	   * Creates a new instance of the radio object.  This configures tmrh20's driver.  Before using, you create an instance
+	   * Creates a new instance of the radio object for NRF52x devices. This configures tmrh20's driver.  Before using, you create an instance
+	   *
+	   * @param address The address of tis radio instance
+	   */	
+    RF24_G(uint8_t address);
+
+	/**
+	   * Constructor
+	   *
+	   * Creates a new instance of the radio object for RF24 devices.  This configures tmrh20's driver.  Before using, you create an instance
 	   * and send in the unique pins that this chip is connected to.
 	   * If you have followed the wiring diagram on the first page, the CE pin should be 7 and the CS pin should be 8. 
 	   *
@@ -203,7 +225,7 @@ public:
 	   * @note This could be fixed with a 3 way handshake, but that is not supported in hardware and would be slow in software.
 	   * @note If you are afraid to send the same data twice, don't worry. Duplicate packets are taken care of at the reciving side.
 	   */
-	bool write(const packet* _packet);
+	bool write(packet* _packet);
 	/**
 	   * Reads a packet.
 	   * The packet is passed by reference, this means we need to use the & operator.
@@ -230,6 +252,17 @@ public:
 	   */
 	bool setChannel(uint8_t channel);
 
+private:
+    /**
+       * Internal function to configure the radio and settings
+       */    
+    void setup(uint8_t address, uint8_t _cepin, uint8_t _cspin);
+    
+    /**
+       * Packet for reception of data
+       */
+    packet receive;
+    
 };
 
 /**
@@ -250,14 +283,12 @@ public:
  * ## First, go to sketch→Include Library→Manage Libraries...
  * ![First, go to sketch→Include Library→Manage Libraries...](step1.png)
  * ## The library manager will show as an additional window.  
- * ## Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.
- * ![The library manager will show as an additional window.  Search for rf24 and select version 1.1.7 of TMRh20’s RF24 Library.](step2.png)
- * ## Press install.  
- * ## Next, add version 1.0 of the RF24G library.
- * ![Next, add version 1.0 of the RF24G library.](step3.PNG)
+ * ## Next, add the latest version of the RF24G library.
+ * ![Next, add the latest version of the RF24G library.](step3.PNG)
  * ## Press install. 
+ * ## It should prompt you to install the nrf_to_nrf and RF24 libraries as well 
  * # Wiring
- * ### This tutorial assumes you are using the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
+ * ### This tutorial assumes you are using nrf52x modules or the RF24 modules sold here: http://yourduino.com/sunshop//index.php?l=product_detail&p=489
  * ### recouses for this tutorial are based on Terry's instructions at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  * ## First, attach the either the high power or low power radio module to the base module
  * ![LOW_POWER](LP_MODULE.jpg)
@@ -267,7 +298,7 @@ public:
  * ### More in-depth instructions can be found at https://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo
  * # General concepts
  * ## This library provides an abstraction layer that allows the user identify each radio by an address and each transmission as a packet.
- * ### Up to 6 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5).
+ * ### Up to 7 radios can be used in the network, with each having a unique address: (0, 1, 2, 3, 4, 5, 6).
  * ### Each radio is initialized using an #RF24_G object, which provides the ability to read and write packets.
  * ### This library uses the built in functions of the radio to ensure guaranteed delivery; However, like any practical guaranteed transmission network, there is a timeout.
  * ### The after 30 retransmit attempts, the radio gives up and returns that it has failed to transmit a packet.  More info can be seen it the #RF24_G::read() docs.

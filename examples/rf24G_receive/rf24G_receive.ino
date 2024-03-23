@@ -6,7 +6,7 @@
 #include <rf24g.h>
 // we must instantiate the RF24_G object outside of the setup function so it is available in the loop function
 RF24_G test;
-int i = 0;
+
 void setup() {
   Serial.begin(9600);
   // create the RF24G object with an address of 1, using pins 7 and 8
@@ -17,7 +17,7 @@ void setup() {
 void loop() {
   // declare packet variable
   packet receiver;
-  // declare string to place the packet payload in
+  // declare variable to place the packet payload in
   uint16_t payload;
   // check if the radio has any packets in the receive queue
   if (test.available() == true) {
@@ -31,7 +31,7 @@ void loop() {
     // print the source address of the received packet
     Serial.print("address: ");
     Serial.println(receiver.getAddress());
-    // load the payload into the payload string
+    // load the payload data into the payload
     receiver.readPayload(&payload, sizeof(payload)); 
     // print the payload 
     Serial.print("payload: ");
